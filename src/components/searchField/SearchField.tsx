@@ -16,10 +16,12 @@ const SearchField = ({ children }: { children: ReactNode }) => {
   const { dispatch } = useContext(GlobalContext);
   const [searchForEntries] = useSearchForEntries();
 
+  //Get the channel list data from channel-list.json
   useEffect(() => {
     const fetchDataFromServer = () => {
       const serverData: ServerData[] = channelList;
-      console.log(serverData);
+
+      //store data in the global State
       if (serverData) {
         dispatch({
           type: GET_SEARCH_RESULT_FROM_SERVER,

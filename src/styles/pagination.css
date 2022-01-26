@@ -1,0 +1,19 @@
+.container {
+  margin-top: 5rem;
+}
+
+.text-primary {
+  margin-bottom: 3rem;
+}
+
+.list-group {
+  list-style: none;
+}
+
+.list-group-item {
+}
+
+.pagination {
+  display: inline-flex;
+  list-style: none;
+}
