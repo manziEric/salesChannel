@@ -1,4 +1,4 @@
-import React, { useEffect, createContext, useContext, ReactNode } from "react";
+import { useEffect, createContext, useContext, ReactNode } from "react";
 import { GlobalContext } from "../../context/Provider";
 import { GET_SEARCH_RESULT_FROM_SERVER } from "../../context/constants";
 import useSearchForEntries from "./useSearchForEntries";

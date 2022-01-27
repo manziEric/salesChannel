@@ -1,16 +1,14 @@
-import React, { useMemo } from "react";
+import  { useMemo } from "react";
 
 export const DOTS = "...";
 
-const range = (start, end) => {
+const range = (start: number, end:number) => {
   let length = end - start + 1;
   return Array.from({ length }, (_, idx) => idx + start);
 };
 
-const usePagination = ({ totalPosts, currentPosts }) => {
+const usePagination = ({ totalPosts, currentPage }:{totalPosts:any, currentPage:any}) => {
   let pageSize = 10;
-
-  const currentPage = currentPosts.length;
 
   const paginationRange = useMemo(() => {
     const totalPageCount = Math.ceil(totalPosts / pageSize);
@@ -29,24 +27,30 @@ const usePagination = ({ totalPosts, currentPosts }) => {
     }
 
     const leftSiblingIndex = Math.max(currentPage - siblingCount, 1);
-    const rightSiblingIndex = Math.min(currentPage + siblingCount, totalPosts);
+    const rightSiblingIndex = Math.min(
+      currentPage + siblingCount,
+      totalPageCount
+    );
 
     const shouldShowLeftDots = leftSiblingIndex > 2;
-    const shouldShowRightDots = rightSiblingIndex < totalPosts - 2;
+    const shouldShowRightDots = rightSiblingIndex < totalPageCount - 2;
 
     const firstPageIndex = 1;
-    const lastPageIndex = totalPosts;
+    const lastPageIndex = totalPageCount;
 
     if (!shouldShowLeftDots && shouldShowRightDots) {
       let leftItemCount = 3 + 2 * siblingCount;
       let leftRange = range(1, leftItemCount);
 
-      return [...leftRange, DOTS, totalPosts];
+      return [...leftRange, DOTS, totalPageCount];
     }
 
     if (shouldShowLeftDots && !shouldShowRightDots) {
       let rightItemCount = 3 + 2 * siblingCount;
-      let rightRange = range(totalPosts - rightItemCount + 1, totalPosts);
+      let rightRange = range(
+        totalPageCount - rightItemCount + 1,
+        totalPageCount
+      );
       return [firstPageIndex, DOTS, ...rightRange];
     }
 
@@ -54,9 +58,9 @@ const usePagination = ({ totalPosts, currentPosts }) => {
       let middleRange = range(leftSiblingIndex, rightSiblingIndex);
       return [firstPageIndex, DOTS, ...middleRange, DOTS, lastPageIndex];
     }
-  }, [currentPage, pageSize, totalPosts]);
+  }, [pageSize, currentPage, totalPosts]);
 
-  return paginationRange;
+  return [paginationRange];
 };
 
 export default usePagination;

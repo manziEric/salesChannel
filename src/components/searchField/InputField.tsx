@@ -1,4 +1,4 @@
-import React, { useContext, FC } from "react";
+import { useContext, FC } from "react";
 import { SearchContext } from "./SearchField";
 
 const InputField: FC = () => {
@@ -12,6 +12,7 @@ const InputField: FC = () => {
 
   return (
     <input
+      style={styles.input}
       type="text"
       name="search"
       required
@@ -22,3 +23,12 @@ const InputField: FC = () => {
 };
 
 export default InputField;
+
+const styles = {
+  input: {
+    borderRadius: "10px",
+    borderColor: "rgb(168, 168, 168)",
+    marginTop: " 0.5rem",
+    marginBottom: "1rem",
+  },
+};
