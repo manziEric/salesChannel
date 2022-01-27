@@ -28,7 +28,7 @@ const useSearchForEntries = () => {
         return res;
       }
     });
-
+   
     dispatch({
       type: GET_SEARCH_RESULT_FOR_TABLE,
       payload: { tableData: filterdData },
