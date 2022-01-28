@@ -29,7 +29,9 @@ const Pagination: FC = () => {
           return (
             <li key={index}>
               <button style={styles.button} onClick={() => paginate(item)}>
-                {item}
+                <span style={currentPage === item ? styles.actief : {}}>
+                  {item}
+                </span>
               </button>
             </li>
           );
@@ -56,6 +58,9 @@ const styles = {
     margin: "0.1rem",
     border: "black",
     cursor: "pointer",
-    color: "blue",
+    color: "gray",
+  },
+  actief: {
+    color: "orange",
   },
 };
