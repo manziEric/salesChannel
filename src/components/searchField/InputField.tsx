@@ -29,6 +29,5 @@ const styles = {
     borderRadius: "10px",
     borderColor: "rgb(168, 168, 168)",
     marginTop: " 0.5rem",
-    marginBottom: "1rem",
   },
 };

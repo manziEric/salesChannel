@@ -29,6 +29,6 @@ const styles = {
     textAlign: "center" as const,
   },
   pagination: {
-    marginTop: "10rem",
+    marginTop: "1rem",
   },
 };
